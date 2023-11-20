@@ -46,7 +46,7 @@ nav ul li{
     width:70%;
     border-radius: 14px;
     padding:30px;
-    background-image: url('taylor.jpg');
+    background-image: url('assests/taylor.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -115,4 +115,40 @@ nav ul li{
 .songinfo img{
     opacity: 0;
     transition: opacity 0.1s ease-in;
+}
+
+@media screen and (max-width:600px){
+    .bottom{
+        height: 40px;
+    }
+    #myprogressbar{
+        width:80vw;
+        height:4px;
+    }
+    #mastersongname{
+        font-size:x-small;
+    }
+    .icons{
+        font-size:xx-small;
+    }
+    nav ul{
+        height: 40px;
+    }
+    .brand img{
+        width: 35px;
+        padding: 0 4px;
+    }
+    .songitems img{
+        width: 16px;
+        margin: 0 8px;
+        border-radius: 30px;
+    }
+
+    .container{
+        height: 38vh;
+    }
+
+    .songlist h2{
+        font-size: medium;
+    }
 }
