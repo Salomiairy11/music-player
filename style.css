@@ -73,11 +73,12 @@ nav ul li{
 
 #myprogressbar{
     width:80vw;
+    cursor:pointer;
 
 }
 
 .songitems img{
-    width: 28px;
+    width: 24px;
     margin: 0 12px;
     border-radius: 34px;
 }
@@ -89,7 +90,7 @@ nav ul li{
     background-color: white;
     display:flex;
     color:black;
-    height: 34px;
+    height: 4vh;
     margin:12px 0px;
     justify-content: space-between;
     align-items: center;
@@ -108,9 +109,10 @@ nav ul li{
     display: flex;
     position:absolute;
     left:10vw;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .songinfo img{
     opacity: 0;
-    transition: opacity 1s ease-in;
+    transition: opacity 0.1s ease-in;
 }

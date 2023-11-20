@@ -3,38 +3,39 @@ console.log("welcome to  spotify");
 //initialize variables
 
 let songIndex = 0;
-let audioElement = new Audio('./songs/rightwhere.mp3');
+let audioElement = new Audio('1.mp3');
 let masterplay = document.getElementById('masterplay');
 let myprogressbar = document.getElementById('myprogressbar');
 let gif = document.getElementById('gif');
+let mastersongname = document.getElementById('mastersongname');
 let songitems= Array.from(document.getElementsByClassName("songitems"));
 
 //listing array of songs 
 let songs = [
   {
     songName: "Right Where You Left Me",
-    filePath: "rightwhere.mp3",
-    coverPath: "cover1.jpg",
+    filePath: "songs/1.mp3",
+    coverPath: "covers/cover1.jpg",
   },
   {
     songName: "All Too Well",
-    filePath: "alltoowell.mp3",
-    coverPath: "cover2.png",
+    filePath: "songs/2.mp3",
+    coverPath: "covers/cover2.png",
   },
   {
     songName: "Champagne Problems",
-    filePath: "champagne.mp3",
-    coverPath: "cover3.jpg",
+    filePath: "songs/3.mp3",
+    coverPath: "covers/cover3.jpg",
   },
   {
     songName: "Exile",
-    filePath: "exile.mp3",
-    coverPath: "cover4.jpg",
+    filePath: "songs/4.mp3",
+    coverPath: "covers/cover4.jpg",
   },
   {
     songName: "You're On Your Own Kid",
-    filePath: "onyourownkid.mp3",
-    coverPath: "cover5.jpg",
+    filePath: "songs/5.mp3",
+    coverPath: "covers/cover5.jpg",
   },
 ];
 
@@ -81,18 +82,55 @@ const makeAllPlays = ()=>{
   Array.from(document.getElementsByClassName('songitemplay')).forEach((element)=>{
       element.classList.remove('fa-circle-pause');
       element.classList.add('fa-circle-play');
-      audioElement.src='./songs/exile.mp3';
-      audioElement.currentTime = 0;
-      audioElement.play();
   })
 }
-
-
 
 Array.from(document.getElementsByClassName('songitemplay')).forEach((element)=>{
   element.addEventListener('click', (e)=>{ 
       makeAllPlays();
+      songIndex = parseInt(e.target.id);
       e.target.classList.remove('fa-circle-play');
       e.target.classList.add('fa-circle-pause');
+      audioElement.src = `songs/${songIndex}.mp3`;
+      mastersongname.innerText = songs[songIndex-1].songName;
+      audioElement.currentTime = 0;
+      audioElement.play();
+      gif.style.opacity = 1;
+      masterplay.classList.remove('fa-circle-play');
+      masterplay.classList.add('fa-circle-pause');
   })
+})
+
+document.getElementById('previous').addEventListener('click',()=>{
+  if(songIndex <= 0)
+  {
+    songIndex = 0;
+  }
+  else{
+    songIndex -= 1;
+  }
+     audioElement.src = `songs/${songIndex + 1}.mp3`;
+      mastersongname.innerText = songs[songIndex].songName;
+      audioElement.currentTime = 0;
+      audioElement.play();
+      masterplay.classList.remove('fa-circle-play');
+      masterplay.classList.add('fa-circle-pause');
+
+})
+
+document.getElementById('next').addEventListener('click',()=>{
+  if(songIndex >= 5)
+  {
+    songIndex = 0;
+  }
+  else{
+    songIndex += 1;
+  }
+        audioElement.src = `songs/${songIndex + 1}.mp3`;
+       mastersongname.innerText = songs[songIndex].songName;
+      audioElement.currentTime = 0;
+      audioElement.play();
+      masterplay.classList.remove('fa-circle-play');
+      masterplay.classList.add('fa-circle-pause');
+
 })
